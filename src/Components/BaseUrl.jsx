@@ -1,1 +1,1 @@
-export const BaseUrl="http://localhost:3000";
+export const BaseUrl="https://crminal-backend.onrender.com";

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import io from 'socket.io-client';
 import LiveMap from './Components/LiveMap';
 import { BaseUrl } from './Components/BaseUrl';
+import PatterLock from './Components/PatterLock';
 
 const socket = io(`${BaseUrl}`); // Connect to the backend
 
@@ -89,10 +91,12 @@ const App = () => {
 
   return (
     <>
-      <div>
-        <LiveMap criminals={criminals} />
-      </div>
-      {/* <PatterLock/> */}
+    <BrowserRouter>
+       <Routes>
+      <Route path="/" element={<PatterLock />} />
+      <Route path="/maps" element={<LiveMap criminals={criminals} />} />
+    </Routes>
+    </BrowserRouter>
     </>
   );
 };

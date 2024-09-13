@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 const PatterLock = () => {
+  const navigate = useNavigate();
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [pattern, setPattern] = useState([]);
   const correctPattern = [1, 2, 3, 6, 9];
@@ -16,6 +18,7 @@ const PatterLock = () => {
   const checkPattern = () => {
     if (JSON.stringify(pattern) === JSON.stringify(correctPattern)) {
       setIsUnlocked(true);
+     navigate("/maps")
     } else {
       setPattern([]); // Reset the pattern if it's incorrect
     }
